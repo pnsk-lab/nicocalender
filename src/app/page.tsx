@@ -59,13 +59,18 @@ export default function Home() {
         expandRows={true}
         displayEventEnd={false}
         displayEventTime={false}
-        eventClick={(info) => {
+        eventMouseEnter={(info) => {
           setInfo({
             title: info.event.title,
             start: info.event.start?.toString() || "",
             id: info.event.id
           });
         }}
+        eventClick={
+          (info) => {
+            window.open(`https://www.nicovideo.jp/watch_tmp/${info.event.id}`)
+          }
+        }
       />
       <hr className="bg-slate-200/40" />
       <p className="text-base">
