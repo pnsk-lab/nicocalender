@@ -2,7 +2,7 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from '@fullcalendar/timegrid'
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 
 export default function Home() {
@@ -10,11 +10,13 @@ export default function Home() {
   date.setFullYear(2009);
   // fetch output.json
   const [output, setOutput] = useState({});
-  fetch("./output.json")
+  useEffect(() => {
+    fetch("./output.json")
     .then((response) => response.json())
     .then((data) => {
       setOutput(data);
     });
+  }, [])
 
     const [info, setInfo] = useState({
       title: "",
